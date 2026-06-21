@@ -54,6 +54,9 @@ def google_verify():
 
     )
 
+
+# ================= SITEMAP =================
+
 @app.route("/sitemap.xml")
 def sitemap():
 
@@ -67,6 +70,21 @@ def sitemap():
 
     )
 
+
+# ================= ROBOTS =================
+
+@app.route("/robots.txt")
+def robots():
+
+    return send_from_directory(
+
+        ".",
+
+        "robots.txt",
+
+        mimetype="text/plain"
+
+    )
 
 # ================= HEALTH =================
 
