@@ -54,6 +54,19 @@ def google_verify():
 
     )
 
+@app.route("/sitemap.xml")
+def sitemap():
+
+    return send_from_directory(
+
+        ".",
+
+        "sitemap.xml",
+
+        mimetype="application/xml"
+
+    )
+
 
 # ================= HEALTH =================
 
