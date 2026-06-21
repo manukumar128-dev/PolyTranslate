@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from deep_translator import GoogleTranslator
 from functools import lru_cache
 import time
@@ -39,6 +39,20 @@ SUPPORTED_LANGUAGES = {
 def home():
 
     return render_template("index.html")
+
+
+# ================= GOOGLE VERIFY =================
+
+@app.route("/googled7d987b5b0e3d91d.html")
+def google_verify():
+
+    return send_from_directory(
+
+        ".",
+
+        "googled7d987b5b0e3d91d.html"
+
+    )
 
 
 # ================= HEALTH =================
