@@ -1,1 +1,524 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Translate anything instantly with PolyTranslate.">
+
+<meta name="theme-color"
+content="#09090b">
+
+<meta name="color-scheme"
+content="dark light">
+
+<title>PolyTranslate • Fast Translator</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<script
+defer
+src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+<button
+id="themeBtn"
+type="button"
+aria-label="Toggle theme">
+
+<i data-lucide="moon"></i>
+
+</button>
+
+<div class="backgroundGlow"></div>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+
+<i data-lucide="languages"></i>
+
+<span>PolyTranslate</span>
+
+</div>
+
+<h1>Translate anything.</h1>
+
+<p>Fast. Beautiful. Minimal.</p>
+
+</header>
+
+
+<!-- FEATURE BAR -->
+
+<div class="statsBar">
+
+<div class="stat">
+
+<i data-lucide="globe"></i>
+
+<span>35+ Languages</span>
+
+</div>
+
+<div class="stat">
+
+<i data-lucide="zap"></i>
+
+<span>Live Translation</span>
+
+</div>
+
+<div class="stat">
+
+<i data-lucide="smartphone"></i>
+
+<span>Mobile Ready</span>
+
+</div>
+
+</div>
+
+
+<!-- USAGE DASHBOARD -->
+
+<div class="dashboard">
+
+<div class="dashboardCard">
+
+<span id="translationsCount">
+
+0
+
+</span>
+
+<p>
+
+Translations
+
+</p>
+
+</div>
+
+<div class="dashboardCard">
+
+<span id="charactersCount">
+
+0
+
+</span>
+
+<p>
+
+Characters
+
+</p>
+
+</div>
+
+<div class="dashboardCard">
+
+<span id="translationSpeed">
+
+0s
+
+</span>
+
+<p>
+
+Speed
+
+</p>
+
+</div>
+
+<div class="dashboardCard">
+
+<span id="wordCount">
+
+0
+
+</span>
+
+<p>
+
+Words
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- LANGUAGE BAR -->
+
+<div class="languageBar">
+
+<div class="languageLabel">
+
+<i data-lucide="scan-search"></i>
+
+<span id="detectedLanguage">
+
+Auto Detect
+
+</span>
+
+</div>
+
+<button
+id="swapBtn"
+type="button"
+aria-label="Swap translation">
+
+<i data-lucide="arrow-left-right"></i>
+
+</button>
+
+
+<div class="languageSelect">
+
+<input
+
+id="languageSearch"
+
+placeholder="Search language..."
+
+autocomplete="off"
+
+spellcheck="false"
+
+aria-label="Search language"
+
+>
+
+<select
+
+id="targetLanguage"
+
+aria-label="Target language"
+
+>
+
+<option value="en">English</option>
+
+<option value="hi">Hindi</option>
+
+<option value="pa">Punjabi</option>
+
+<option value="ur">Urdu</option>
+
+<option value="bn">Bengali</option>
+
+<option value="gu">Gujarati</option>
+
+<option value="mr">Marathi</option>
+
+<option value="ta">Tamil</option>
+
+<option value="te">Telugu</option>
+
+<option value="ml">Malayalam</option>
+
+<option value="kn">Kannada</option>
+
+<option value="fr">French</option>
+
+<option value="es">Spanish</option>
+
+<option value="de">German</option>
+
+<option value="it">Italian</option>
+
+<option value="pt">Portuguese</option>
+
+<option value="nl">Dutch</option>
+
+<option value="ru">Russian</option>
+
+<option value="uk">Ukrainian</option>
+
+<option value="pl">Polish</option>
+
+<option value="ar">Arabic</option>
+
+<option value="tr">Turkish</option>
+
+<option value="fa">Persian</option>
+
+<option value="he">Hebrew</option>
+
+<option value="zh-CN">Chinese</option>
+
+<option value="ja">Japanese</option>
+
+<option value="ko">Korean</option>
+
+<option value="th">Thai</option>
+
+<option value="vi">Vietnamese</option>
+
+<option value="id">Indonesian</option>
+
+<option value="ms">Malay</option>
+
+<option value="el">Greek</option>
+
+<option value="sv">Swedish</option>
+
+<option value="fi">Finnish</option>
+
+<option value="da">Danish</option>
+
+<option value="no">Norwegian</option>
+
+</select>
+
+<span class="arrow">
+
+⌄
+
+</span>
+
+</div>
+
+</div>
+
+
+<!-- TRANSLATOR -->
+
+<div class="translator">
+
+<div class="glassPanel">
+
+<div class="panelHeader">
+
+<span>
+
+Write
+
+</span>
+
+<div class="icons">
+
+<button
+id="speakInput"
+type="button"
+aria-label="Speak input text">
+
+<i data-lucide="volume-2"></i>
+
+</button>
+
+<button
+id="clearBtn"
+type="button"
+aria-label="Clear text">
+
+<i data-lucide="trash-2"></i>
+
+</button>
+
+</div>
+
+</div>
+
+<textarea
+
+id="inputText"
+
+placeholder="Type here..."
+
+maxlength="5000"
+
+autocomplete="off"
+
+spellcheck="true"
+
+></textarea>
+
+</div>
+
+
+<div class="glassPanel">
+
+<div class="panelHeader">
+
+<span>
+
+Result
+
+</span>
+
+<div class="icons">
+
+<button
+id="copyBtn"
+type="button"
+aria-label="Copy translation">
+
+<i data-lucide="copy"></i>
+
+</button>
+
+<button
+id="speakOutput"
+type="button"
+aria-label="Speak translated text">
+
+<i data-lucide="volume-2"></i>
+
+</button>
+
+</div>
+
+</div>
+
+<textarea
+
+id="outputText"
+
+readonly
+
+spellcheck="false"
+
+placeholder="Translation appears here..."
+
+></textarea>
+
+</div>
+
+</div>
+
+
+<!-- QUICK PHRASES -->
+
+<section>
+
+<h3>
+
+<i data-lucide="sparkles"></i>
+
+Quick Phrases
+
+</h3>
+
+<div id="phrases"></div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section>
+
+<h3>
+
+<i data-lucide="history"></i>
+
+Recent
+
+</h3>
+
+<div id="history"></div>
+
+</section>
+
+
+<!-- SHORTCUTS -->
+
+<section>
+
+<h3>
+
+<i data-lucide="keyboard"></i>
+
+Shortcuts
+
+</h3>
+
+<div class="shortcuts">
+
+<div class="chip">
+
+Ctrl + Enter
+
+</div>
+
+<div class="chip">
+
+Ctrl + L
+
+</div>
+
+<div class="chip">
+
+Ctrl + C
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footerText">
+
+PolyTranslate • Flask Edition • Final Release
+
+</div>
+
+</footer>
+
+</div>
+
+
+<script
+src="{{ url_for('static', filename='app.js') }}"></script>
+
+<script>
+
+window.addEventListener(
+
+"load",
+
+()=>{
+
+lucide.createIcons();
+
+}
+
+);
+
+</script>
+
+</body>
+
+</html>
