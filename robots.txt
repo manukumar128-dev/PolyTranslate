@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://polytranslates.onrender.com/sitemap.xml
